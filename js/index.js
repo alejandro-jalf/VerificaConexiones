@@ -1,19 +1,35 @@
 var app = new Vue({
     el: "#app",
     data: {
-        conexiones: [
-            {success: true, conexion: "nameSuc1", message: "Conexion exitosa"},
-            {success: true, conexion: "nameSuc2", message: "Conexion exitosa"},
-            {success: false, conexion: "nameSuc3", message: "Conexion fallida"},
-            {success: true, conexion: "nameSuc4", message: "Conexion exitosa"},
-            {success: false, conexion: "nameSuc5", message: "Conexion fallida"}
-        ],
-        namesSucursales: {nameSuc1: "ZARAGOZA", nameSuc2: "VICTORIA", nameSuc3: "OLUTA", nameSuc4: "BODEGA", nameSuc5: "JALTIPAN"}
+        conexiones: [],
+        namesSucursales: {nameSuc1: "ZARAGOZA", nameSuc2: "VICTORIA", nameSuc3: "OLUTA", nameSuc4: "BODEGA", nameSuc5: "JALTIPAN"},
+        loading: false,
+        urlConexion: "url"
+    },
+    mounted: function() {
+        this.startLoading();
+        const instancia = this;
+        axios.get(instancia.urlConexion)
+        .then(function (response) {
+            instancia.conexiones = response.data.data;
+            instancia.stopLoading();
+            console.log(response);
+        })
+        .catch(function (error) {
+            instancia.stopLoading();
+            console.log('Error: ' + error);
+        })
     },
     methods: {
         loadImage: function (success) {
             const ruta = success ? "./src/success.png" : "./src/warning.jpg";
             return ruta;
+        },
+        startLoading: function() {
+            this.loading = true;
+        },
+        stopLoading: function() {
+            this.loading = false;
         }
     }
 });

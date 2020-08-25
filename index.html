@@ -14,6 +14,9 @@
         </nav>
     </header>
     <div class="container" id="app">
+        <div v-if="loading" id="loading">
+            <img src="./src/spinner.gif" alt="">
+        </div>
         <div v-for="sucursal in conexiones" class="card mt-3 container-gen" style=" box-shadow: 2px 2px 2px #e6e6e6;">
             <div class="row no-gutters">
                 <div class="col-md-2 text-center p-2" id="container-image">
@@ -33,9 +36,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="./js/index.js"></script>
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 </html>
