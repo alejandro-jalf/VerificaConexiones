@@ -13,7 +13,6 @@ var app = new Vue({
         .then(function (response) {
             instancia.conexiones = response.data.data;
             instancia.stopLoading();
-            console.log(response);
         })
         .catch(function (error) {
             instancia.stopLoading();
